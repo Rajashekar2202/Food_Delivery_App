@@ -1,6 +1,7 @@
 import basket_icon from "./basket_icon.png";
 import logo from "./logo.png";
 import header_img from "./header_img.png";
+
 import search_icon from "./search_icon.png";
 import menu_1 from "./menu_1.png";
 import menu_2 from "./menu_2.png";
@@ -112,7 +113,7 @@ export const menu_list = [
     menu_image: menu_7,
   },
   {
-    menu_name: "Chinese",
+    menu_name: "Chineese",
     menu_image: menu_8,
   },
 ];
