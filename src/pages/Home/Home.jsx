@@ -8,7 +8,7 @@ const Home = () => {
   const [category, setCategory] = useState("All");
   return (
     <div>
-      <Header />
+      <Header setCategory={setCategory} />
       <ExploreMenu category={category} setCategory={setCategory} />
       <FoodDisplay category={category} />
     </div>

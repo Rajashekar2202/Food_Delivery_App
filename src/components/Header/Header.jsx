@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ setCategory }) => {
   return (
     <div className="header">
       <div className="header-contents">
@@ -10,7 +10,16 @@ const Header = () => {
           choose from a diverse menu featuring a delectable array of dishes
           crafted with the finest ingredients and culinary expertise.
         </p>
-        <button>View Menu</button>
+        <button
+          onClick={() => {
+            setCategory("All");
+            document
+              .getElementById("explore-menu")
+              .scrollIntoView({ behavior: "smooth" });
+          }}
+        >
+          View Menu
+        </button>
       </div>
     </div>
   );
