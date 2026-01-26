@@ -4,6 +4,7 @@ import { assets } from "../../assets/assets";
 
 const LoginPopup = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState("Sign Up");
+  
   return (
     <div className="login-popup">
       <form className="login-popup-container">

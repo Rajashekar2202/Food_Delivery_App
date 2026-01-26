@@ -3,11 +3,12 @@ import "./Header.css";
 
 const Header = ({ setCategory }) => {
   return (
-    <div className="header">
-      <div className="header-contents">
-        <h2>Order Your favorite food here</h2>
+    <header className="header">
+      <section className="header-contents">
+
+        <h1>Order your favorite food here</h1>
         <p>
-          choose from a diverse menu featuring a delectable array of dishes
+          Choose from a diverse menu featuring a delectable array of dishes
           crafted with the finest ingredients and culinary expertise.
         </p>
         <button
@@ -20,8 +21,8 @@ const Header = ({ setCategory }) => {
         >
           View Menu
         </button>
-      </div>
-    </div>
+      </section>
+    </header>
   );
 };
 

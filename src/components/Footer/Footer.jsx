@@ -1,49 +1,57 @@
-import React from "react";
 import "./Footer.css";
 import { assets } from "../../assets/assets";
 
 const Footer = () => {
-  return (
-    <div className="footer" id="footer">
-      <div className="footer-content">
-        <div className="footer-content-left">
-          <img src={assets.logo} alt="" />
-          <p>© 2025 Tomato.com- All Right Reserved.</p>
-          <div className="footer-social-icons">
-            <img src={assets.facebook_icon} alt="" />
-            <img src={assets.twitter_icon} alt="" />
-            <img src={assets.linkedin_icon} alt="" />
-          </div>
-        </div>
+  const currentYear = new Date().getFullYear();
 
-        <div className="footer-content-center">
-          <h2>COMPANY</h2>
+  return (
+    <footer className="footer" id="footer">
+      <div className="footer-content">
+
+        {/* Left Section */}
+        <section className="footer-content-left">
+          <img src={assets.logo} alt="" />
+          <p>© {currentYear} Tomato.com. All rights reserved</p>
+          <div className="footer-social-icons">
+            <img src={assets.facebook_icon} alt="Facebook Icon" />
+            <img src={assets.twitter_icon} alt="X.com Icon" />
+            <img src={assets.linkedin_icon} alt="LinkedIn Icon" />
+          </div>
+        </section>
+
+        {/* Center Section */}
+        <nav className="footer-content-center">
+          <h2>Company</h2>
           <ul>
             <li>About Us</li>
             <li>Delivery</li>
             <li>Partners</li>
             <li>Privacy Policy</li>
           </ul>
-        </div>
+        </nav>
 
-        <div className="footer-content-right">
-          <h2>GET IN TOUCH</h2>
-          <ul>
+        {/* Right Section */}
+        <section className="footer-content-right">
+          <h2>Get in Touch</h2>
+          <address>
+            <ul>
             <li>Phone: +91-99******99</li>
             <li>customerservice@tomato.com</li>
           </ul>
-        </div>
+          </address>          
+        </section>
       </div>
       <hr />
 
-      <div className="app-download" id="app-download">
-        <p>For Better Experience Download Tomato App</p>
+      {/* App Download Section */}
+      <section className="app-download" id="app-download">
+        <p>For a better experience, download the Tomato app</p>
         <div className="app-download-platforms">
-          <img src={assets.play_store} alt="" />
-          <img src={assets.app_store} alt="" />
+          <img src={assets.play_store} alt="Google Play Store" />
+          <img src={assets.app_store} alt="Apple App Store" />
         </div>
-      </div>
-    </div>
+      </section>
+    </footer>
   );
 };
 

@@ -1,18 +1,23 @@
 import { useContext } from "react";
-import "./PlaceOrder.css";
-import { StoreContext } from "../../context/StoreContext";
+import "./Styles/PlaceOrder.css";
+import { StoreContext } from "../context/StoreContext";
 
 const PlaceOrder = () => {
   const { getTotalCartAmount } = useContext(StoreContext);
 
   const subtotal = getTotalCartAmount();
-  const deliveryFee = subtotal === 0 ? 0 : 2;
+  const deliveryFee = subtotal > 0 ? 2 : 0;
   const total = subtotal + deliveryFee;
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+
   return (
-    <form className="place-order">
-      <div className="place-order-left">
-        <p className="title">Delivery Information</p>
+    <form className="place-order" onSubmit={handleSubmit}>
+      <section className="place-order-left">
+        <h2 className="title">Delivery Information</h2>
         <div className="multi-fields">
           <input type="text" placeholder="First Name" />
           <input type="text" placeholder="Last Name" />
@@ -28,9 +33,9 @@ const PlaceOrder = () => {
           <input type="text" placeholder="Country" />
         </div>
         <input type="text" placeholder="Phone Number" />
-      </div>
+      </section>
 
-      <div className="place-order-right">
+      <aside className="place-order-right">
         <div className="cart-total">
           <h2>Cart Totals</h2>
           <div>
@@ -51,7 +56,7 @@ const PlaceOrder = () => {
           </div>
           <button type="button">PROCEED TO PAYMENTS</button>
         </div>
-      </div>
+      </aside>
     </form>
   );
 };

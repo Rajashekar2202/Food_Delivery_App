@@ -6,23 +6,28 @@
 .explore-menu h1 {
   color: #262626;
   font-weight: 500;
+  font-size: max(2vw, 24px);
 }
 .explore-menu-text {
   max-width: 60%;
   columns: #808080;
+  font-size: max(1.2vw, 16px);
+  line-height: 1.5;
 }
 
 .explore-menu-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 30px;
   text-align: center;
   margin: 20px 0px;
-  overflow-x: scroll;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
 }
 .explore-menu-list::-webkit-scrollbar {
-  width: 0;
+  height:  6px;
 }
 .explore-menu-list-item img {
   width: 7.5vw;
