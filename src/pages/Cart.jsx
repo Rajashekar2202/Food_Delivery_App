@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import "./Styles/Cart.css";
 import { StoreContext } from "../context/StoreContext";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,17 @@ const Cart = () => {
     removeFromCart,
     getTotalCartAmount,
   } = useContext(StoreContext);
+
   const navigate = useNavigate();
 
   const subtotal = getTotalCartAmount();
   const deliveryFee = subtotal === 0 ? 0 : 2;
   const total = subtotal + deliveryFee;
 
-  const itemsInCart = food_list.filter((item) => cartItems[item._id] > 0);
+  const itemsInCart = useMemo(
+    () => food_list.filter((item) => cartItems[item._id] > 0),
+    [food_list, cartItems],
+  );
 
   return (
     <div className="cart">
@@ -29,71 +33,85 @@ const Cart = () => {
           <p>Quantity</p>
           <p>Total</p>
         </div>
-        <br />
+
         <hr />
 
-        {itemsInCart.length === 0 && <p>Your cart is empty</p>}
+        {itemsInCart.length === 0 && (
+          <p className="empty-cart">Your cart is empty</p>
+        )}
 
-        {itemsInCart.map((item) => (
-          <div key={item._id}>
-            <div className="cart-items-title cart-items-item">
-              <img src={item.image} alt={item.name} />
-              <p>{item.name}</p>
-              <p>₹{item.price}</p>
+        {itemsInCart.map((item) => {
+          const quantity = cartItems[item._id];
 
-              <div className="quantity-controls">
-                <button
-                  className="qty-btn"
-                  onClick={() => removeFromCart(item._id)}
-                  disabled={cartItems[item._id] <= 0}
-                >
-                  -
-                </button>
-                <span className="qty-count">{cartItems[item._id]}</span>
-                <button className="qty-btn" onClick={() => addToCart(item._id)}>
-                  +
-                </button>
+          return (
+            <div key={item._id} className="cart-item-wrapper">
+              <div className="cart-items-title cart-items-item">
+                <img src={item.image} alt={item.name} />
+                <p className="item-name">{item.name}</p>
+                <p>₹{item.price}</p>
+
+                <div className="quantity-controls">
+                  <button
+                    className="qty-btn"
+                    onClick={() => removeFromCart(item._id)}
+                    disabled={quantity <= 0}
+                  >
+                    -
+                  </button>
+
+                  <span className="qty-count">{quantity}</span>
+
+                  <button
+                    className="qty-btn"
+                    onClick={() => addToCart(item._id)}
+                  >
+                    +
+                  </button>
+                </div>
+
+                <p className="item-total">₹{item.price * quantity}</p>
               </div>
 
-              <p>₹{item.price * cartItems[item._id]}</p>
+              <hr />
             </div>
-            <hr />
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="cart-bottom">
         <div className="cart-total">
           <h2>Cart Totals</h2>
-          <div>
+          <div className="cart-total-box">
             <div className="cart-total-details">
               <p>Subtotal</p>
               <p>₹{subtotal}</p>
             </div>
-            <hr />
+
             <div className="cart-total-details">
               <p>Delivery Fee</p>
               <p>₹{deliveryFee}</p>
             </div>
-            <hr />
-            <div className="cart-total-details">
+
+            <div className="cart-total-details total">
               <b>Total</b>
               <b>₹{total}</b>
             </div>
           </div>
 
-          <button disabled={subtotal === 0} onClick={() => navigate("/order")}>
+          <button
+            className="checkout-btn"
+            disabled={subtotal === 0}
+            onClick={() => navigate("/order")}
+          >
             PROCEED TO CHECKOUT
           </button>
         </div>
 
         <div className="cart-promocode">
-          <div>
-            <p>If you have a promo code, Enter it here</p>
-            <div className="cart-promocode-input">
-              <input type="text" placeholder="Promo code" />
-              <button>Submit</button>
-            </div>
+          <p>If you have a promo code, enter it here</p>
+          <div className="cart-promocode-input">
+            <input type="text" placeholder="Promo code" />
+            <button>Submit</button>
           </div>
         </div>
       </div>
