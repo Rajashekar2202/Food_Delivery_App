@@ -7,18 +7,20 @@ import FoodDisplay from "../components/FoodDisplay/FoodDisplay";
 
 const Home = () => {
   const [category, setCategory] = useState("All");
-  const handleCategoryChange = useCallback((value) => {
-    setCategory(value);
+
+  /* CATEGORY CHANGE */
+  const handleCategoryChange = useCallback((newCategory) => {
+    setCategory(newCategory);
   }, []);
 
   return (
-    <>
+    <main className="home">
       <Header onCategoryChange={handleCategoryChange} />
 
       <ExploreMenu category={category} setCategory={handleCategoryChange} />
 
       <FoodDisplay category={category} />
-    </>
+    </main>
   );
 };
 
