@@ -2,6 +2,11 @@ import "./ExploreMenu.css";
 import { menu_list } from "../../assets/assets";
 
 const ExploreMenu = ({ category, setCategory }) => {
+  // Handle category selection
+  const handleCategoryClick = (menuName) => {
+    setCategory((prev) => (prev === menuName ? "All" : menuName));
+  };
+
   return (
     <section className="explore-menu" id="explore-menu">
       <h1>Check out today’s flavors.</h1>
@@ -10,27 +15,28 @@ const ExploreMenu = ({ category, setCategory }) => {
         Enjoy a variety of delicious dishes made with the finest ingredients.
       </p>
 
+      {/* MENU LIST */}
       <div className="explore-menu-list">
-        {menu_list.map((item, index) => {
+        {menu_list.map((item) => {
+          const isActive = category === item.menu_name;
+
           return (
-            <div
-              key={index}
-              onClick={() =>
-                setCategory((prev) =>
-                  prev === item.menu_name ? "All" : item.menu_name
-                )
-              }
-              className={`explore-menu-list-item ${
-                category === item.menu_name ? "active" : ""
-              }`}
+            <button
+              key={item.menu_name}
+              type="button"
+              className={`explore-menu-list-item ${isActive ? "active" : ""}`}
+              onClick={() => handleCategoryClick(item.menu_name)}
+              aria-label={item.menu_name}
             >
               <img
-                className={category === item.menu_name ? "active" : ""}
+                className={isActive ? "active" : ""}
                 src={item.menu_image}
                 alt={item.menu_name}
+                loading="lazy"
               />
+
               <p>{item.menu_name}</p>
-            </div>
+            </button>
           );
         })}
       </div>
