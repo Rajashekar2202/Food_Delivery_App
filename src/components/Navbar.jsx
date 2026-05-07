@@ -1,9 +1,9 @@
 import { useContext, useMemo } from "react";
-import "./Navbar.css";
+import "./Styles/Navbar.css";
 
 import { Link } from "react-router-dom";
-import { assets } from "../../assets/assets";
-import { StoreContext } from "../../context/StoreContext";
+import { assets } from "../assets/assets";
+import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
   const { getTotalCartAmount } = useContext(StoreContext);

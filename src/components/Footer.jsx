@@ -1,5 +1,5 @@
-import "./Footer.css";
-import { assets } from "../../assets/assets";
+import "./Styles/Footer.css";
+import { assets } from "../assets/assets";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

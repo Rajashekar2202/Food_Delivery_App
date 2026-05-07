@@ -1,4 +1,4 @@
-import "./Header.css";
+import "./Styles/Header.css";
 
 const Header = ({ setCategory }) => {
   // Handle menu scroll

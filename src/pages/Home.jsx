@@ -1,9 +1,9 @@
 import { useState, useCallback } from "react";
 import "./Styles/Home.css";
 
-import Header from "../components/Header/Header";
-import ExploreMenu from "../components/ExploreMenu/ExploreMenu";
-import FoodDisplay from "../components/FoodDisplay/FoodDisplay";
+import Header from "../components/Header";
+import ExploreMenu from "../components/ExploreMenu";
+import FoodDisplay from "../components/FoodDisplay";
 
 const Home = () => {
   const [category, setCategory] = useState("All");

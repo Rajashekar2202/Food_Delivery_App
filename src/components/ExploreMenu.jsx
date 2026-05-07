@@ -1,5 +1,5 @@
-import "./ExploreMenu.css";
-import { menu_list } from "../../assets/assets";
+import "./Styles/ExploreMenu.css";
+import { menu_list } from "../assets/assets";
 
 const ExploreMenu = ({ category, setCategory }) => {
   // Handle category selection

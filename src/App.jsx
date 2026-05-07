@@ -2,9 +2,9 @@ import { useState, useCallback } from "react";
 
 import { Route, Routes } from "react-router-dom";
 
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import LoginPopup from "./components/LoginPopup/LoginPopup";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import LoginPopup from "./components/LoginPopup";
 
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
