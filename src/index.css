@@ -1,27 +1,117 @@
+/* RESET */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: Outfit;
   scroll-behavior: smooth;
 }
+
+/* BODY */
 body {
   min-height: 100vh;
+  font-family: "Outfit", sans-serif;
+  background-color: #ffffff;
+  color: #222;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* ROOT */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* LINKS */
 a {
   text-decoration: none;
   color: inherit;
 }
-.app {
-  width: 80%;
-  margin: auto;
+
+/* IMAGES */
+img {
+  max-width: 100%;
+  display: block;
 }
 
+/* BUTTONS */
+button {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* INPUTS */
+input,
+textarea,
+select {
+  font-family: inherit;
+  outline: none;
+}
+
+/* LIST */
+ul,
+ol {
+  list-style: none;
+}
+
+/* APP CONTAINER */
+.app {
+  width: min(90%, 1400px);
+
+  margin: 0 auto;
+}
+
+/* TEXT SELECTION */
+::selection {
+  background-color: tomato;
+  color: white;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f3f3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c8c8c8;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* GLOBAL ANIMATION */
 @keyframes fadeIn {
-  0% {
+  from {
     opacity: 0;
+    transform: translateY(10px);
   }
-  100% {
+
+  to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .app {
+    width: 92%;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .app {
+    width: 94%;
   }
 }
