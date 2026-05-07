@@ -4,116 +4,211 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: clamp(60px, 8vw, 80px) 8vw 20px; 
+  gap: 24px;
+  padding: clamp(60px, 8vw, 90px) 8vw 24px;
   margin-top: clamp(60px, 10vw, 100px);
 }
 
+/* CONTENT */
 .footer-content {
   width: 100%;
   max-width: 1400px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: clamp(40px, 6vw, 80px);
-  place-items: start;
 }
+
+/* SECTIONS */
 .footer-content-left,
-.footer-content-right,
-.footer-content-center {
+.footer-content-center,
+.footer-content-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
 }
-.footer-content-left li,
-.footer-content-right li,
-.footer-content-center li {
-  list-style: none;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: 0.2s ease, transform 0.2s ease;
-}
-.footer-content-left li:hover,
-.footer-content-center li:hover,
-.footer-content-right li:hover {
-  opacity: 0.7;
-  transform: translateX(2px);
+
+/* LOGO */
+.footer-logo {
+  width: 160px;
 }
 
-.footer-content-right h2,
-.footer-content-center h2 {
-  color: #ffffff;
+/* TEXT */
+.footer-content p,
+.footer-content li,
+.footer-content a {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #d9d9d9;
+  text-decoration: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+/* HEADINGS */
+.footer-content h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* LIST */
+.footer-content ul {
+  padding: 0;
+  margin: 0;
+}
+
+.footer-content li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.footer-content li:hover,
+.footer-content a:hover {
+  opacity: 0.8;
+  color: tomato;
+  transform: translateX(3px);
+}
+
+/* SOCIAL ICONS */
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .footer-social-icons img {
-  width: 40px;
-  margin-right: 12px;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  width: 38px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
+
 .footer-social-icons img:hover {
-  opacity: 0.8;
-  transform: scale(1.05);
+  transform: scale(1.08);
+  opacity: 0.85;
 }
 
+/* FOCUS */
 .footer a:focus-visible,
-.footer li:focus-visible {
-  outline: 2px solid #ffffff;
+.social-btn:focus-visible,
+.store-btn:focus-visible {
+  outline: 2px solid #fff;
   outline-offset: 4px;
+  border-radius: 4px;
 }
 
+/* DIVIDER */
 .footer hr {
   width: 100%;
   max-width: 1400px;
-  height: 2px;
-  margin: 10px 0;
-  background-color: gray;
   border: none;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
+/* DOWNLOAD */
 .app-download {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 25px;
-  padding: 10px 0;
+  flex-wrap: wrap;
+  text-align: center;
 }
+
 .app-download p {
-  margin: 0;
-  font-size: clamp(20px, 2.5vw, 25px);
+  font-size: clamp(18px, 2.2vw, 24px);
   font-weight: 500;
 }
+
+/* STORE BUTTONS */
 .app-download-platforms {
   display: flex;
   align-items: center;
   gap: 15px;
 }
-.app-download-platforms img {
-  width: 150px;
+
+.store-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.app-download-platforms img:hover {
-  transform: scale(1.06);
 }
 
+.app-download-platforms img {
+  width: 150px;
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.app-download-platforms img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-content-left {
+    grid-column: span 2;
+  }
+}
+
+/* MOBILE */
 @media (max-width: 750px) {
+  .footer {
+    text-align: center;
+  }
+
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 30px;
-    text-align: center;
+    gap: 40px;
     place-items: center;
   }
+
   .footer-content-left,
   .footer-content-center,
   .footer-content-right {
     align-items: center;
   }
+
   .app-download {
     flex-direction: column;
-    text-align: center;
+    gap: 20px;
   }
-  .footer-social-icons img {
-    margin-right: 8px;
+
+  .app-download-platforms img {
+    width: 135px;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .footer {
+    padding-inline: 20px;
+  }
+
+  .footer-logo {
+    width: 140px;
+  }
+
+  .app-download p {
+    line-height: 1.5;
   }
 }
