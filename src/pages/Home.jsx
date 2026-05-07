@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import "./Styles/Home.css";
+
 import Header from "../components/Header/Header";
 import ExploreMenu from "../components/ExploreMenu/ExploreMenu";
 import FoodDisplay from "../components/FoodDisplay/FoodDisplay";
 
 const Home = () => {
   const [category, setCategory] = useState("All");
+  const handleCategoryChange = useCallback((value) => {
+    setCategory(value);
+  }, []);
+
   return (
-    <div>
-      <Header setCategory={setCategory} />
-      <ExploreMenu category={category} setCategory={setCategory} />
+    <>
+      <Header onCategoryChange={handleCategoryChange} />
+
+      <ExploreMenu category={category} setCategory={handleCategoryChange} />
+
       <FoodDisplay category={category} />
-    </div>
+    </>
   );
 };
 

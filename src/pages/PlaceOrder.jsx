@@ -11,8 +11,7 @@ const PlaceOrder = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  }
-
+  };
 
   return (
     <form className="place-order" onSubmit={handleSubmit}>

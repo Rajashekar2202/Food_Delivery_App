@@ -1,34 +1,52 @@
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import "./Navbar.css";
-import { assets } from "../../assets/assets";
+
 import { Link } from "react-router-dom";
+import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
   const { getTotalCartAmount } = useContext(StoreContext);
-  const hasItemInCart = getTotalCartAmount() > 0;
+
+  // ✅ avoid repeated calculations
+  const hasItemInCart = useMemo(
+    () => getTotalCartAmount() > 0,
+    [getTotalCartAmount],
+  );
 
   return (
-    <div className="navbar">
-
+    <header className="navbar">
+      {/* LOGO */}
       <Link to="/" aria-label="Go to homepage">
         <img src={assets.logo} alt="Tomato logo" className="logo" />
       </Link>
 
-      <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+      {/* RIGHT SECTION */}
+      <nav className="navbar-right">
+        {/* SEARCH */}
+        <button className="icon-btn" aria-label="Search" type="button">
+          <img src={assets.search_icon} alt="Search icon" />
+        </button>
 
+        {/* CART */}
         <div className="navbar-search-icon">
-          <Link to="/cart">
-            <img src={assets.basket_icon} alt="" />
+          <Link to="/cart" aria-label="Go to cart">
+            <img src={assets.basket_icon} alt="Cart icon" />
           </Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+
+          {hasItemInCart && <span className="dot"></span>}
         </div>
 
-        <button onClick={() => setShowLogin(true)}>sign in</button>
-        
-      </div>
-    </div>
+        {/* LOGIN */}
+        <button
+          className="signin-btn"
+          onClick={() => setShowLogin(true)}
+          type="button"
+        >
+          Sign In
+        </button>
+      </nav>
+    </header>
   );
 };
 
