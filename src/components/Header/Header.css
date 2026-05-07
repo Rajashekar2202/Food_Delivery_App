@@ -1,53 +1,124 @@
 .header {
-  height: 34vw;
-  margin: 30px auto;
-  background: url("/header_img.png") no-repeat;
-  background-size: cover;
   position: relative;
+  height: 34vw;
+  min-height: 320px;
+  margin: 30px auto;
+  background: url("/header_img.png") center/cover no-repeat;
   border-radius: 20px;
+  overflow: hidden;
 }
+
+/* DARK OVERLAY */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+/* CONTENT */
 .header-contents {
   position: absolute;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 1.5vw;
+  align-items: flex-start;
+  gap: 18px;
   max-width: 50%;
   bottom: 10%;
   left: 6vw;
-  animation: fadeIn 3s;
+  animation: fadeIn 1s ease;
 }
+
+/* TITLE */
 .header-contents h1 {
-  font-weight: 500;
-  color: white;
-  font-size: max(4.5vw, 22px);
+  color: #fff;
+  font-size: clamp(28px, 4.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
 }
+
+/* DESCRIPTION */
 .header-contents p {
-  color: white;
-  font-size: 1vw;
+  color: #f3f3f3;
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.6;
 }
+
+/* BUTTON */
 .header-contents button {
   border: none;
-  color: #747474;
-  font-weight: 500;
-  padding: 1vw 2.3vw;
-  background-color: white;
-  font-size: max(1vw, 13px);
+  padding: 12px 28px;
   border-radius: 50px;
+  background-color: #fff;
+  color: #555;
+  font-size: clamp(13px, 1vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    color 0.3s ease;
 }
+
+.header-contents button:hover {
+  background-color: tomato;
+  color: #fff;
+}
+
+.header-contents button:active {
+  transform: scale(0.97);
+}
+
+/* TABLET */
 @media (max-width: 1050px) {
+  .header {
+    height: 42vw;
+  }
+
   .header-contents {
-    max-width: 45%;
+    max-width: 60%;
+    gap: 14px;
   }
 }
-@media (max-width: 1050px) {
-  .header-contents {
-    max-width: 65%;
+
+/* MOBILE */
+@media (max-width: 750px) {
+  .header {
+    height: 60vw;
+    min-height: 280px;
   }
+
+  .header-contents {
+    max-width: 80%;
+    left: 5%;
+    bottom: 8%;
+  }
+
   .header-contents p {
     display: none;
   }
+
   .header-contents button {
-    padding: 2vw 4vw;
+    padding: 10px 20px;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .header {
+    height: 75vw;
+  }
+
+  .header-contents {
+    max-width: 90%;
+  }
+
+  .header-contents h1 {
+    line-height: 1.2;
   }
 }
